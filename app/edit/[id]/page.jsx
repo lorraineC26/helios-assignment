@@ -31,7 +31,7 @@ const BookDetails = () => {
   
 
   // PUT method to update the book details
-  const updateBook = async (updatedBook) => {
+  const updateBookAPI = async (updatedBook) => {
     const response = await fetch(`/api/books/${id}`, {
       method: "PUT",
       headers: {
@@ -46,7 +46,7 @@ const BookDetails = () => {
     <div className="mt-24 px-4">
       {/* wait till receiving the book info and then render the form component */}
       {book ? (
-        <BookForm book={book} updateBookAPI={updateBook} />
+        <BookForm book={book} updateBookAPI={updateBookAPI} />
       ) : (
         <p>Loading...</p>
       )}

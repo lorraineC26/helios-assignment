@@ -40,7 +40,7 @@ export async function PUT(req, context) {
   return new Response(JSON.stringify(book), { status: 200 });
 }
 
-// DELETE a book
+// DELETE a specific book by id
 export async function DELETE(req, context) {
   const { id } = context.params;
 
