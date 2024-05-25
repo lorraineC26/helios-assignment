@@ -24,13 +24,13 @@ export async function GET(req, context) {
 // PUT to update a book
 export async function PUT(req, context) {
   const { id } = context.params;
+
+  // parse the response body so can destructure the data
   const updatedBookData = await req.json();
 
   const { title, price, category, description } = updatedBookData;
 
-  // debugging
-  console.log("price", price);
-
+  // update the specific book in db
   const book = await prisma.books.update({
     where: { id: parseInt(id) },
     data: {

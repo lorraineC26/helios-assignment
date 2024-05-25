@@ -1,16 +1,17 @@
 "use client";
-import { Button } from '@/components/ui/button';
 import React from 'react'
+import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { useRouter } from "next/navigation"; // from next/Router -> unmounted issue; avoid to import from it if under side the app directory
 
 const BookForm = ({ book, updateBookAPI }) => {
+
   const [title, setTitle] = useState(book.title);
   const [price, setPrice] = useState(book.price);
   const [category, setCategory] = useState(book.category);
   const [description, setDescription] = useState(book.description);
 
-  // debugging
-  // console.log(book);
+  const router = useRouter();  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,9 +23,16 @@ const BookForm = ({ book, updateBookAPI }) => {
       description,
     };
 
-    console.log("updated: ", updatedBook);
+    try {
+      // pass to the PUT method to update in the db
+      await updateBookAPI(updatedBook);
 
-    await updateBookAPI(updatedBook);
+      // redirect to the home page
+      router.push("/");
+
+    } catch (error) {
+      console.error("Error updating book:", error);
+    }
 
   };
 

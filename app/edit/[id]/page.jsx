@@ -3,7 +3,7 @@ import BookForm from '@/app/_components/BookForm';
 import React from 'react'
 import { useEffect, useState } from 'react';
 
-import { redirect, useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 const BookDetails = () => {
   
@@ -30,6 +30,7 @@ const BookDetails = () => {
   }, [id]); 
   
 
+  // PUT method to update the book details
   const updateBook = async (updatedBook) => {
     const response = await fetch(`/api/books/${id}`, {
       method: "PUT",
@@ -43,7 +44,7 @@ const BookDetails = () => {
 
   return (
     <div className="mt-24 px-4">
-      {/* wait till receive the book info and then render the form component */}
+      {/* wait till receiving the book info and then render the form component */}
       {book ? (
         <BookForm book={book} updateBookAPI={updateBook} />
       ) : (
@@ -52,6 +53,5 @@ const BookDetails = () => {
     </div>
   );
 }
-
 
 export default BookDetails
