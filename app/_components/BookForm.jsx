@@ -3,18 +3,15 @@ import { Button } from '@/components/ui/button';
 import React from 'react'
 import { useState } from 'react';
 
-const BookForm = () => {
-  // mock
-  const book = {
-    id: 1,
-    title: "The Book of Bill",
-    price: 35.99,
-    category: "fiction",
-    description:
-      "The demon that terrorized Gravity Falls is back from the great beyond to finally tell his side of the story in The Book of Bill, written by none other than Bill Cipher himself. Inside, Bill sheds light on his bizarre origins, his sinister effects on human history, the Pines family’s most embarrassing secrets, and the key to overthrowing the world (laid out in a handy step-by-step guide). This chaotic and beautifully illustrated tome contains baffling riddles, uncrackable ciphers, lost Journal 3 pages, ways to cheat death, the meaning of life, and a whole chapter on Silly Straws. But most importantly, The Book of Bill is deeply, deeply cursed.",
-  };
+const BookForm = ({book}) => {
 
   const [title, setTitle] = useState(book.title);
+  const [price, setPrice] = useState(book.price);
+  const [category, setCategory] = useState(book.category);
+  const [description, setDescription] = useState(book.description);
+
+  // debugging
+  // console.log(book);
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center">
@@ -40,6 +37,7 @@ const BookForm = () => {
             name="price"
             type="number"
             value={book.price}
+            onChange={(e) => setPrice(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200 focus:border-blue-500"
           />
         </div>
@@ -51,6 +49,7 @@ const BookForm = () => {
             name="category"
             type="text"
             value={book.category}
+            onChange={(e) => setCategory(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200 focus:border-blue-500"
           />
         </div>
@@ -61,6 +60,7 @@ const BookForm = () => {
             id="description"
             name="description"
             value={book.description}
+            onChange={(e) => setDescription(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200 focus:border-blue-500"
           />
         </div>

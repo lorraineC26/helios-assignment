@@ -14,9 +14,7 @@ const BookDetails = () => {
   const [book, setBook] = useState(null);
 
   // debugging
-  console.log("book id:", params);
-
-
+  // console.log("book id:", params);
   useEffect(() => {
     if (id) {
       const fetchSingleBook = async () => {
@@ -26,7 +24,7 @@ const BookDetails = () => {
         const data = await response.json();
 
         // debugging
-        console.log("Selected book details: ", data);
+        // console.log("Selected book details: ", data);
 
         setBook(data);
       };
@@ -38,8 +36,8 @@ const BookDetails = () => {
 
   return (
     <div className="mt-24 px-4">
-      <BookForm />
-      
+      {/* wait till receive the book info and then render the form component */}
+      {book ? <BookForm book={book} /> : <p>Loading...</p>}
     </div>
   );
 }
