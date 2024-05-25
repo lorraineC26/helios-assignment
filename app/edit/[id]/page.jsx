@@ -3,7 +3,7 @@ import BookForm from '@/app/_components/BookForm';
 import React from 'react'
 import { useEffect, useState } from 'react';
 
-import { useParams } from 'next/navigation';
+import { redirect, useParams } from 'next/navigation';
 
 const BookDetails = () => {
   
@@ -13,8 +13,6 @@ const BookDetails = () => {
 
   const [book, setBook] = useState(null);
 
-  // debugging
-  // console.log("book id:", params);
   useEffect(() => {
     if (id) {
       const fetchSingleBook = async () => {
@@ -23,21 +21,34 @@ const BookDetails = () => {
         
         const data = await response.json();
 
-        // debugging
-        // console.log("Selected book details: ", data);
-
+        // set the book state with the received data --> pass to the BookForm
         setBook(data);
       };
 
       fetchSingleBook();
     }
-  }, [id]);  
+  }, [id]); 
+  
+
+  const updateBook = async (updatedBook) => {
+    const response = await fetch(`/api/books/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedBook),
+    });
+  };
 
 
   return (
     <div className="mt-24 px-4">
       {/* wait till receive the book info and then render the form component */}
-      {book ? <BookForm book={book} /> : <p>Loading...</p>}
+      {book ? (
+        <BookForm book={book} updateBookAPI={updateBook} />
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
