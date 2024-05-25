@@ -9,21 +9,12 @@ export async function GET(req) {
   return new Response(JSON.stringify(books), { status: 200 });
 }
 
-
-// PUT to update a book's details
-export async function PUT(req) {
-  const { id } = req.params;
-  const { title, price, category, description } = req.body;
-
-  const book = await prisma.books.update({
-    where: { id: parseInt(id) },
-    data: {
-      title,
-      price: parseFloat(price),
-      category,
-      description,
-    },
+// POST endpoint to create a book
+export async function POST(req) {
+  const newBook = await req.json();
+  const book = await prisma.books.create({
+    data: newBook,
   });
 
-  return new Response(JSON.stringify(book), { status: 200 });
+  return new Response(JSON.stringify(book), { status: 201 });
 }

@@ -29,10 +29,16 @@ export default function Home() {
     setBooks(books.filter((book) => book.id !== id));
   }
 
+  console.log(books.length);
 
   return (
-    <>
-      <BooksList books={books} onDelete={deleteBookAPI} />
-    </>
+    <div className="mt-24 px-4">
+      {/* using the books array length to control the display of 'empty reminder' */}
+      {books.length === 0 ? (
+        <p className="text-2xl font-bold text-center">Oops, empty bookstore</p>
+      ) : (
+        <BooksList books={books} onDelete={deleteBookAPI} />
+      )}
+    </div>
   );
 }
