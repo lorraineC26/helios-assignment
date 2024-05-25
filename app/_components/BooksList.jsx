@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import React from 'react'
+import { Eye, Trash2 } from 'lucide-react';
 
 const BooksList = ({books}) => {
 
@@ -13,8 +14,14 @@ const BooksList = ({books}) => {
             <p className="text-md text-gray-600">Category: {book.category}</p>
 
             <div className="flex flex-grow gap-5 mt-4">
-              <Button>View</Button>
-              <Button>Delete</Button>
+              <Button className="flex gap-1 cursor-pointer">
+                <Eye className="h-5 w-5" />
+                View
+              </Button>
+              <Button className="flex gap-1 cursor-pointer">
+                <Trash2 className="h-5 w-5" />
+                Delete
+              </Button>
             </div>
           </li>
         ))}
