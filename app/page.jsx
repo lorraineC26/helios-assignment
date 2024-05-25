@@ -13,7 +13,7 @@ export default function Home() {
       const data = await res.json();
 
       // debugging
-      console.log("books fetched: ", data);
+      // console.log("books fetched: ", data);
 
       // set all books data to the books state
       setBooks(data);
