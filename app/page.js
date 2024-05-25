@@ -1,9 +1,9 @@
-import Image from "next/image";
+import BooksList from "./_components/BooksList";
 
 export default function Home() {
   return (
-    <div>
-      body
-    </div> 
+    <>
+      <BooksList />
+    </> 
   );
 }
