@@ -2,16 +2,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// GET endpoint to fetch a single book
+// GET to fetch a single book
 export async function GET(req, context) {
   
   // get the id from the URL
   const {params} = context;
   const id = params.id;
-
-  // debugging
-  // console.log("book id", id);
-  // return Response.json({ id });
 
   // pass the id to the Prisma client to find the book
   const book = await prisma.books.findUnique({
@@ -30,7 +26,7 @@ export async function PUT(req, context) {
 
   const { title, price, category, description } = updatedBookData;
 
-  // update the specific book in db
+  // update the specific book in the db
   const book = await prisma.books.update({
     where: { id: parseInt(id) },
     data: {
@@ -42,5 +38,17 @@ export async function PUT(req, context) {
   });
 
   return new Response(JSON.stringify(book), { status: 200 });
+}
+
+// DELETE a book
+export async function DELETE(req, context) {
+  const { id } = context.params;
+
+  // delete the book from the db
+  await prisma.books.delete({
+    where: { id: parseInt(id) },
+  });
+
+  return new Response(null, { status: 204 });
 }
 

@@ -12,9 +12,6 @@ export default function Home() {
       const res = await fetch("/api/books");
       const data = await res.json();
 
-      // debugging
-      // console.log("books fetched: ", data);
-
       // set all books data to the books state
       setBooks(data);
     };
@@ -22,10 +19,20 @@ export default function Home() {
     fetchBooks();
   }, [])
 
+  // delete book by id
+  const deleteBookAPI = async (id) => {
+    await fetch(`/api/books/${id}`, {
+      method: "DELETE",
+    });
+
+    // filter out the deleted book
+    setBooks(books.filter((book) => book.id !== id));
+  }
+
 
   return (
     <>
-      <BooksList books={books} />
+      <BooksList books={books} onDelete={deleteBookAPI} />
     </>
   );
 }

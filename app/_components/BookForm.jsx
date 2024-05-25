@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useRouter } from "next/navigation"; // from next/Router -> unmounted issue; avoid to import from it if under side the app directory
 
 const BookForm = ({ book, updateBookAPI }) => {
-
+  // save the changed book details in the state
   const [title, setTitle] = useState(book.title);
   const [price, setPrice] = useState(book.price);
   const [category, setCategory] = useState(book.category);

@@ -3,8 +3,7 @@ import React from 'react'
 import { Trash2, Pencil } from 'lucide-react';
 import Link from 'next/link';
 
-const BooksList = ({books}) => {
-
+const BooksList = ({ books, onDelete }) => {
   return (
     <div className="mt-24 px-4">
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -30,7 +29,10 @@ const BooksList = ({books}) => {
                 </Button>
               </Link>
 
-              <Button className="flex gap-1 cursor-pointer">
+              <Button
+                className="flex gap-1 cursor-pointer"
+                onClick={() => onDelete(book.id)}
+              >
                 <Trash2 className="h-5 w-5" />
                 Delete
               </Button>
@@ -40,6 +42,6 @@ const BooksList = ({books}) => {
       </ul>
     </div>
   );
-}
+};
 
 export default BooksList
