@@ -11,16 +11,14 @@ This is a fullstack bookstore application built using Next.js, Tailwind CSS, Pos
 - Use the `+ Add Book` in the header to go redirect the page and fill in the form.
 - Enter the title, price, category, and description (optional)
 - Click on the `Add` will update the db and redirect to the main page
-- Click on the logo will redirect to the main page
 
 <p align="center">
-  <img src=https://github.com/lorraineC26/helios-assignment/blob/main/public/02add-new-book.png?raw=true alt="hero" width="400px" style="display: block; margin: 0 auto;">
+  <img src=https://github.com/lorraineC26/helios-assignment/blob/main/public/02add-new-book.png?raw=true alt="hero" width="300px" style="display: block; margin: 0 auto;">
 </p>
 
 <p align="center">
   <img src=https://github.com/lorraineC26/helios-assignment/blob/main/public/03new-books.png?raw=true alt="hero" width="300px" style="display: block; margin: 0 auto;">
 </p>
-
 
 **View all books:**
 
@@ -38,8 +36,12 @@ This is a fullstack bookstore application built using Next.js, Tailwind CSS, Pos
 **Update a book:**
 
 - Click the "Edit" button next to a book to update its details.
+- Click on the logo will redirect to the main page
 <p align="center">
   <img src=https://github.com/lorraineC26/helios-assignment/blob/main/public/01update-books.png?raw=true alt="hero" width="300px" style="display: block; margin: 0 auto;">
+</p>
+<p align="center">
+  <img src=https://github.com/lorraineC26/helios-assignment/blob/main/public/05updated-books.png?raw=true alt="hero" width="300px" style="display: block; margin: 0 auto;">
 </p>
 
 **Delete a book:**
@@ -76,6 +78,11 @@ This is a fullstack bookstore application built using Next.js, Tailwind CSS, Pos
   ```bash
   npx prisma studio
   ```
+
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
 ## Tech Stacks
 
