@@ -2,7 +2,9 @@
 
 ## Overview
 
-This is a fullstack bookstore application built using Next.js, Tailwind CSS, PostgreSQL, and Prisma. The application allows users to add, view, update, and delete books.
+- **Part I:** This is a fullstack bookstore application built using Next.js, Tailwind CSS, PostgreSQL, and Prisma. The application allows users to add, view, update, and delete books.
+
+- **Part II:** My approach to the algorithmic problem
 
 ## Features
 
@@ -88,3 +90,47 @@ This is a fullstack bookstore application built using Next.js, Tailwind CSS, Pos
 
 - **Frontend:** Next.js, JavaScript, Tailwind CSS
 - **Backend:** Next.js API routes, PostgreSQL, Prisma
+
+## My approach to the algorithmic problem.
+The `Algorithmic-Problem.js` can also be found in the root of this project.
+
+```js
+/*
+ * Problem Statement: Array Manipulation**
+ * Write a function `findMaxConsecutiveOnes` that
+ * takes a binary array `nums`  and
+ * returns the maximum number of consecutive 1s in the array.
+ */
+
+function findMaxConsecutiveOnes(nums) {
+  let match = 0; // keep track the current match
+  let maxMatches = 0; // keep track the maximum matches
+
+  for (const value of nums) {
+    if (value === 1) {
+      match++;
+
+      // Update the max if current match is greater
+      if (match > maxMatches) {
+        maxMatches = match;
+      }
+    } else {
+      // Reset to 0 if it's not 1
+      match = 0;
+    }
+  }
+
+  return maxMatches;
+}
+
+// Example usage
+console.log(findMaxConsecutiveOnes([1, 1, 0, 1, 1, 1])); // Output: 3
+console.log(findMaxConsecutiveOnes([1, 0, 1, 1, 0, 1])); // Output: 2
+```
+
+- We need a counter to count the matches between the value of the current index and 1 --> initialize a variable `match`= 0.
+- We also need another counter to store the maximum consecutive 1s through the entire iteration --> initialize a variable `maxMatches`= 0.
+- Nothing to play with the array index here, so no need to use a classic for loop. Instead, we can use a `for-of loop`to iterate each value directly and compare with 1 using an `if statement`.
+- When the current value equals to 1 --> increment `match` by 1
+- `match` will rest to 0 as soon as the current number does not equal to 1. 
+- Assign `match`'s value to `maxMatches` when match is greater.

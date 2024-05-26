@@ -9,15 +9,13 @@ function findMaxConsecutiveOnes(nums) {
   let match = 0; // keep track the current match
   let maxMatches = 0; // keep track the maximum matches
 
-  for (let i = 0; i < nums.length; i++) {
-
-    // only count for consecutive 1s
-    if (nums[i] === 1) {
-      match++; 
+  for (const value of nums) {
+    if (value === 1) {
+      match++;
 
       // Update the max if current match is greater
       if (match > maxMatches) {
-        maxMatches = match; 
+        maxMatches = match;
       }
     } else {
       // Reset to 0 if it's not 1
